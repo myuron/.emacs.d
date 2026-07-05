@@ -1,0 +1,27 @@
+{
+  "nodes": {
+    "doom-themes": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780720334,
+        "narHash": "sha256-H6pw++E3VkqeSkNH9Z0QJGser5Wzmxsah044cp9ndYo=",
+        "owner": "doomemacs",
+        "repo": "themes",
+        "rev": "cc7686783e5e6e4174a345c768047d524f0dd54f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "themes",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "doom-themes": "doom-themes"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
