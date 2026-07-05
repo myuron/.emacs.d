@@ -1,11 +1,12 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
+    twist.url = "github:emacs-twist/twist.nix";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    twist.url = "github:emacs-twist/twist.nix";
     elpa = {
       url = "github:elpa-mirrors/elpa";
       flake = false;
@@ -20,14 +21,20 @@
     {
       self,
       nixpkgs,
-      treefmt-nix,
+      emacs-overlay,
       twist,
+      treefmt-nix,
       elpa,
       melpa,
     }:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        overlays = [
+          emacs-overlay.overlay
+        ];
+      };
 
       emacsConfig = twist.lib.makeEnv {
         inherit pkgs;
